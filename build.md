@@ -25,3 +25,7 @@ so once we are done with book cover nd bookcoversvg then move to booklist comp
 
 now again we see earlier we thought ki sirf hamara homepage 2 part mai divide hai ek overview and ek booklist but when we started building bookoverview we got too many mini comps
 now as we go to booklist again we can see it consist of bookcard many cards 
+
+
+so now finally our homepage done header homepage done 
+so now lets make the auth ui now which user will see before homepage 
