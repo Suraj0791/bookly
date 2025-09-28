@@ -43,3 +43,10 @@ in imageupload file we need to make authenticator function which will hit the im
 at this point we only deal with image upload we will add more things ater on this file 
 next make a db folder databse folder nd add file drizle and add configurtaion 
 next we setup schema inside database folder nd then setup drizlle.config.ts file
+
+
+now we will use unite i mean auth in this app tull now we hgave onlyauth ui 
+now as we had setup database nd schema lest unit auth.js 
+
+
+so we need to build now a auth.ts file in root add provider session nd all there 
