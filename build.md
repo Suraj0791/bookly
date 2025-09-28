@@ -18,3 +18,5 @@ ON LEFT SIDE WE will display the information details about book nd right will sh
 so in homepage we have two diff section bookoverview and booklist(for popular books)
 
 for now add constant data to build the bookoverview nd booklist comp using sample data
+for bookcover i mean the image in right side we will make it as a  new comp and use it inside book overview passing down the props 
+again now u need one more comp inside bookcover thst is bookcoversvg so u see how we break components 
