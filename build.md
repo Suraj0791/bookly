@@ -38,3 +38,7 @@ lets setup imagekit
 add env of imagelit , make a config file now add there the env , make a comp imgupload/fileupload
 then we will make an api route api/auth/imagekit this folder inside route.ts for authenticating
 
+in imageupload file we need to make authenticator function which will hit the image route 
+
+at this point we only deal with image upload we will add more things ater on this file 
+next make a db folder databse folder nd add file drizle and add configurtaion 

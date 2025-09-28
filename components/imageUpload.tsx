@@ -48,10 +48,53 @@ const authenticator=async ()=>{
 
 
 const ImageUpload = () => {
+     
+
+
+     const ikUploadRef = useRef(null);
+  const [file, setFile] = useState<{ filePath: string | null }>({
+    filePath: value ?? null,
+  });
+  const [progress, setProgress] = useState(0);
+
+
+    const onError = (error: any) => {
+    console.log(error);
+
+    toast({
+      title: `${type} upload failed`,
+      description: `Your ${type} could not be uploaded. Please try again.`,
+      variant: "destructive",
+    });
+  };
+
+  const onSuccess = (res: any) => {
+    setFile(res);
+    onFileChange(res.filePath);
+
+    toast({
+      title: `${type} uploaded successfully`,
+      description: `${res.filePath} uploaded successfully!`,
+    });
+  };
+
+   
   return (
-    <div>
-      
-    </div>
+        <ImageKitProvider
+      publicKey={publicKey}
+      urlEndpoint={urlEndpoint}
+      authenticator={authenticator}
+    >
+          <IKUpload
+        ref={ikUploadRef}
+        onError={onError}
+        onSuccess={onSuccess}
+        
+        fileName='test-upload.png'
+        className="hidden"
+      />
+
+     </ImageKitProvider>
   )
 }
 
