@@ -16,3 +16,5 @@ and below that there are cards of books under section popular books
 IN NUTSHELL AT TOP WE WILL DISPLAY THE OVERVIEW OF A NEW BOOK ADDED ALONG WITH IMAGE IN RIGHT SIDE 
 ON LEFT SIDE WE will display the information details about book nd right will show image and then below we will have a popular books section showiung cards of boosk 
 so in homepage we have two diff section bookoverview and booklist(for popular books)
+
+for now add constant data to build the bookoverview nd booklist comp using sample data
