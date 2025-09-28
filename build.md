@@ -49,4 +49,7 @@ now we will use unite i mean auth in this app tull now we hgave onlyauth ui
 now as we had setup database nd schema lest unit auth.js 
 
 
-so we need to build now a auth.ts file in root add provider session nd all there nd then a ...nextauth folder inside aiuth folder and route file for auth
+so we need to build now a auth.ts file in root add provider session nd all there nd then a ...nextauth folder inside aiuth folder and route file for auth and then a middleware.ts file in root of project 
+
+now we will crate a server action of signing up of ouyr user 
+always remember to keep the types interface in types.d.ts
