@@ -29,3 +29,12 @@ now as we go to booklist again we can see it consist of bookcard many cards
 
 so now finally our homepage done header homepage done 
 so now lets make the auth ui now which user will see before homepage 
+so we will make validation.ts file using zod inside lib folder for our auth schema validation and then we will make two routes 
+signi-in ans sign-up page and a authform .tsx which will use map to render all validations field 
+this is just a ui setup now 
+
+before setting actual backend nd db 
+lets setup imagekit
+add env of imagelit , make a config file now add there the env , make a comp imgupload/fileupload
+then we will make an api route api/auth/imagekit this folder inside route.ts for authenticating
+
