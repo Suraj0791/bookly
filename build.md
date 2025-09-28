@@ -49,4 +49,4 @@ now we will use unite i mean auth in this app tull now we hgave onlyauth ui
 now as we had setup database nd schema lest unit auth.js 
 
 
-so we need to build now a auth.ts file in root add provider session nd all there 
+so we need to build now a auth.ts file in root add provider session nd all there nd then a ...nextauth folder inside aiuth folder and route file for auth
