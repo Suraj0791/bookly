@@ -20,3 +20,8 @@ so in homepage we have two diff section bookoverview and booklist(for popular bo
 for now add constant data to build the bookoverview nd booklist comp using sample data
 for bookcover i mean the image in right side we will make it as a  new comp and use it inside book overview passing down the props 
 again now u need one more comp inside bookcover thst is bookcoversvg so u see how we break components 
+so once we are done with book cover nd bookcoversvg then move to booklist comp
+
+
+now again we see earlier we thought ki sirf hamara homepage 2 part mai divide hai ek overview and ek booklist but when we started building bookoverview we got too many mini comps
+now as we go to booklist again we can see it consist of bookcard many cards 
