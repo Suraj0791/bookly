@@ -54,3 +54,4 @@ so we need to build now a auth.ts file in root add provider session nd all there
 now we will crate a server action of signing up of ouyr user 
 always remember to keep the types interface in types.d.ts
 then in actions folder inside lib folder make  auth.ts file and we will write two server fucntion one for signinwith credecntila sand one for signup 
+update the rootlayout to use session provider
