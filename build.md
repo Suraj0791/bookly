@@ -153,3 +153,9 @@ now make a file worfklow ts inside lib
 
 now qtash trigger the events but we still need to use other thing to send email we will use resend
 we will write resend email code inside workflow 
+
+
+NOW WE NEED TO MAKE ADMIN DASHBOARD 
+SO WE NEED A DIFFERENT APP NOW FOR ADMIN PANEL MONO REPO
+NOW ADMIN PANEL IS COMPLETE DIFFERENT FROM USER PANEL I MEAN ALL UI AND ALL 
+SO AGAIN INSIDE ADMIN FOLDER WE NEED TO COMPLETELY MAKE DIFFERRENT FOLDERS ROOT ND UI COMP SIDEBAR NAVABR ND HOME HERO SECTION ND ALL
