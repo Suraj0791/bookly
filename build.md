@@ -174,3 +174,7 @@ so we need to use imagekit for this
 so go back to imageuplaod compone t rename it to fileupload nd add these 
 
 for color we need to make use react-colorful packsge from npm to pick color of book and make a new comp ColorPicker 
+
+
+now this wa sall of ui for admin to add new books 
+now we need to create a serve raction for actually implementing this 
