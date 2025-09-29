@@ -27,7 +27,7 @@ const BorrowBook = ({
   const handleBorrowBook = async () => {
     if (!isEligible) {
       toast({
-        title: "Error",
+        title: "Account Approval Required",
         description: message,
         variant: "destructive",
       });

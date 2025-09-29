@@ -1,9 +1,10 @@
 import dummyBooks from "../dummybooks.json";
 import ImageKit from "imagekit";
-import { books } from "@/database/schema";
+import { books, users } from "@/database/schema";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { config } from "dotenv";
+import { hash } from "bcryptjs";
 
 config({ path: ".env" });
 
@@ -38,6 +39,38 @@ const seed = async () => {
   console.log("Seeding data...");
 
   try {
+    // Seed demo users
+    console.log("Creating demo users...");
+
+    const adminPassword = await hash("admin123", 10);
+    const userPassword = await hash("student123", 10);
+
+    // Demo Admin Account
+    await db.insert(users).values({
+      fullName: "Admin User",
+      email: "admin@university.edu",
+      universityId: 12345,
+      password: adminPassword,
+      universityCard: "/demo/admin-id.jpg", // Demo image path
+      status: "APPROVED",
+      role: "ADMIN",
+    }).onConflictDoNothing();
+
+    // Demo Student Account (Approved)
+    await db.insert(users).values({
+      fullName: "John Student",
+      email: "student@university.edu",
+      universityId: 67890,
+      password: userPassword,
+      universityCard: "/demo/student-id.jpg", // Demo image path
+      status: "APPROVED",
+      role: "USER",
+    }).onConflictDoNothing();
+
+    console.log("Demo users created successfully!");
+
+    // Seed books
+    console.log("Seeding books...");
     for (const book of dummyBooks) {
       const coverUrl = (await uploadToImageKit(
         book.coverUrl,
@@ -55,7 +88,7 @@ const seed = async () => {
         ...book,
         coverUrl,
         videoUrl,
-      });
+      }).onConflictDoNothing();
     }
 
     console.log("Data seeded successfully!");

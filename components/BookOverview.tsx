@@ -33,7 +33,11 @@ const BookOverview = async ({
     message:
       availableCopies <= 0
         ? "Book is not available"
-        : "You are not eligible to borrow this book",
+        : user?.status === "PENDING"
+          ? "You are not eligible to borrow books as you haven't been approved by the library admin yet. Please wait for approval or contact Suraj (Library Admin) to expedite the process."
+          : user?.status === "REJECTED"
+            ? "Your account has been rejected by the library admin. Please contact Suraj (Library Admin) for reconsideration or more information."
+            : "You are not eligible to borrow this book",
   };
   return (
     <section className="book-overview">

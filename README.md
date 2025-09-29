@@ -263,6 +263,69 @@ npm run build && npm start
 
 ---
 
+## 🎭 **Demo Credentials**
+
+### **🔑 Admin Access**
+
+For testing admin features, create an admin account or use these demo credentials:
+
+```
+Email: admin@university.edu
+Password: admin123
+Role: ADMIN
+```
+
+### **👤 User Access**
+
+For testing user features:
+
+```
+Email: student@university.edu
+Password: student123
+Role: USER (Approved Status)
+```
+
+**📋 Note:** New user registrations require admin approval before borrowing books. This simulates real university library workflows.
+
+---
+
+## 🎬 **Live Demo & Screenshots**
+
+### **🌐 Live Application**
+
+**Deploy URL:** [Add your Vercel URL here]
+
+### **📸 Key Features Preview**
+
+**🔐 Authentication System**
+
+- Multi-role user system (Admin/Student)
+- University ID verification with ImageKit
+- Admin approval workflow
+
+**📚 Library Management**
+
+- Real-time book availability
+- Advanced book search and filtering
+- Borrow/return tracking with due dates
+
+**⚡ Admin Dashboard**
+
+- User management and approval system
+- Book inventory management
+- Overdue book tracking
+- Activity monitoring and analytics
+
+**🚀 Modern Tech Stack**
+
+- Next.js 15 with App Router and Server Components
+- TypeScript for type safety
+- Drizzle ORM with PostgreSQL
+- Redis caching and rate limiting
+- Automated workflows with Upstash QStash
+
+---
+
 ## 🎛️ **Feature Deep Dive**
 
 ### **🔐 Authentication Flow**
