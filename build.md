@@ -163,3 +163,8 @@ SO AGAIN INSIDE ADMIN FOLDER WE NEED TO COMPLETELY MAKE DIFFERRENT FOLDERS ROOT 
 so make admin layout nd all 
 inside comp folder make a admin folder which we will use just for admin components
 create sidebar inside admin/compinents that is sidebar for admin panel similarly header nd all
+
+
+now admins had ability to add new books so we will add add new books functionality as well as ui for adding book form for thatm
+make a new folder inside admin , books and make page.tsx
+nd in components/admin make a new folder forms and inside that BookForm
