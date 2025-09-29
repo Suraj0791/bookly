@@ -55,3 +55,70 @@ now we will crate a server action of signing up of ouyr user
 always remember to keep the types interface in types.d.ts
 then in actions folder inside lib folder make  auth.ts file and we will write two server fucntion one for signinwith credecntila sand one for signup 
 update the rootlayout to use session provider
+
+
+Sign Up Process:
+
+User fills form: name, email, university ID, password
+File Upload: University card image via ImageKit
+Server validation & rate limiting
+Password hashing & user creation
+Workflow trigger (external service)
+Automatic sign-in
+Redirect to home page
+Sign In Process:
+
+Email & password input
+Server validation & rate limiting
+Database credential verification
+JWT token creation
+Session establishment
+
+
+1. User submits form
+   ↓
+2. AuthForm.tsx → handleSubmit()
+   ↓
+3. signUp() or signInWithCredentials() action
+   ↓
+4. Rate limiting check
+   ↓
+5. Database operations (Drizzle ORM)
+   ↓
+6. NextAuth.js session creation
+   ↓
+7. Client-side redirect
+   ↓
+8. Session-protected routes access
+
+FILE UPLOAD FLOW
+1. User selects file
+   ↓
+2. FileUpload component triggers
+   ↓
+3. GET /api/imageKit (authentication)
+   ↓
+4. ImageKit SDK upload
+   ↓
+5. Success callback updates form
+   ↓
+6. File URL stored in form state
+   ↓
+7. Submitted with user registration
+
+
+Auth Actions (auth.ts):
+signUp() Function:
+
+✅ Rate limiting check
+✅ Email uniqueness validation
+✅ Password hashing (bcryptjs)
+✅ User creation in database
+✅ Workflow trigger (onboarding)
+✅ Auto sign-in after registration
+signInWithCredentials() Function:
+
+✅ Rate limiting check
+✅ Credential validation
+✅ NextAuth signIn call
+✅ Error handling
