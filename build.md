@@ -149,4 +149,7 @@ In Upstash Workflow, every workflow is exposed as an endpoint. Every endpoint yo
 In Next.js, these endpoints are implemented as API routes.
 Create the file according to your router setup:
 App Router → put the endpoint under app/api
-Pages Router → put the endpoint under pages/api
+now make a file worfklow ts inside lib
+
+now qtash trigger the events but we still need to use other thing to send email we will use resend
+we will write resend email code inside workflow 
