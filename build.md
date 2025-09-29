@@ -133,3 +133,20 @@ build the ratelimit built and redis file in lib and add that rate limiter in sig
 add ratelimit in signupcredential server action too 
 
 make a new page for too-fast 
+later we will use workflow from upsatsh which will be used to send notifivatrion to user when their book borrowed is due nd much more like imolementing user onboarding flow 
+
+we have done auth , rate limit ,ui nd all but for industry level we need one more thing 
+we need that user must comeback to our app else what we will do with A good ui or good backend 
+if user neevr comes back to our app , he aint reminded then the issue is there 
+to solve this we will use user onboarding flow 
+like duolingo app tracks i a user has not  logged in for a specific number of days and if that happens tjey send a push notification or an email also zomato do thius like emailing swiggy too 
+developer use workflow for this 
+like a user has not logged if for 3 days then send an sms/email to user tocomeback nd use app
+WORKFLOWS ARE GREAT 
+SCHEDULKE EVENTS AND TRIGGER THEM 
+NOW go to qstash workflows see docs for nextjs nd follow THAT 
+In Upstash Workflow, every workflow is exposed as an endpoint. Every endpoint you expose using the SDK’s serve() function acts as a workflow that can be triggered independently.
+In Next.js, these endpoints are implemented as API routes.
+Create the file according to your router setup:
+App Router → put the endpoint under app/api
+Pages Router → put the endpoint under pages/api
