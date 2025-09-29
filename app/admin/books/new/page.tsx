@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import BookForm from "@/components/admin/forms/BookForm";
 
-const page = () => {
+const Page = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <Button asChild className="back-btn">
+        <Link href="/admin/books">Go Back</Link>
+      </Button>
 
-export default page
+      <section className="w-full max-w-2xl">
+        <BookForm />
+      </section>
+    </>
+  );
+};
+export default Page;

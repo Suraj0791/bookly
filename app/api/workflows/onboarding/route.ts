@@ -1,7 +1,6 @@
 import { serve } from "@upstash/workflow/nextjs";
-import { db } from "../../../../database/drizzle";
-// Make sure the path is correct; adjust if your schema file is elsewhere
-import { users } from "../../../../database/schema";
+import { db } from "@/database/drizzle";
+import { users } from "@/database/schema";
 import { eq } from "drizzle-orm";
 import { sendEmail } from "@/lib/workflow";
 
