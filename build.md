@@ -168,3 +168,9 @@ create sidebar inside admin/compinents that is sidebar for admin panel similarly
 now admins had ability to add new books so we will add add new books functionality as well as ui for adding book form for thatm
 make a new folder inside admin , books and make page.tsx
 nd in components/admin make a new folder forms and inside that BookForm
+
+now for admin to add new books in library the need to upload manyb files like a pdf of book, bookk image nd primary color
+so we need to use imagekit for this 
+so go back to imageuplaod compone t rename it to fileupload nd add these 
+
+for color we need to make use react-colorful packsge from npm to pick color of book and make a new comp ColorPicker 
