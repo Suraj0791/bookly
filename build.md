@@ -127,3 +127,9 @@ signInWithCredentials() Function:
 
 NOW WE NEED TO SETUP UPSTASH REDIS WORKFLOW BECUASE WE WANT TO RATE LIMIT THE REQUEST MADE TO AUTH PAGES 
 SO WE NEED TO MAKE  ARATE LIMITER WHIUCH WE CAN ADD IN ANY COMPO SERVER ACTION
+build the ratelimit built and redis file in lib and add that rate limiter in signup serve action first 
+  const ip = (await headers()).get("x-forwarded-for") || "127.0.0.1";
+  const { success } = await ratelimit.limit(ip);
+add ratelimit in signupcredential server action too 
+
+make a new page for too-fast 
