@@ -31,6 +31,7 @@ const BorrowBook = ({
         description: message,
         variant: "destructive",
       });
+      return; // Exit early if not eligible
     }
 
     setBorrowing(true);
@@ -52,7 +53,7 @@ const BorrowBook = ({
           variant: "destructive",
         });
       }
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "An error occurred while borrowing the book",
