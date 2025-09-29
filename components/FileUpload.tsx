@@ -2,7 +2,6 @@
 
 import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekitio-next";
 import config from "@/lib/config";
-import ImageKit from "imagekit";
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
@@ -16,13 +15,13 @@ const {
 
 const authenticator = async () => {
   try {
-    const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
+    const response = await fetch(`${config.env.apiEndpoint}/api/imagekit-auth`);
 
     if (!response.ok) {
       const errorText = await response.text();
 
       throw new Error(
-        `Request failed with status ${response.status}: ${errorText}`,
+        `Request failed with status ${response.status}: ${errorText}`
       );
     }
 
