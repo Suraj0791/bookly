@@ -1,18 +1,12 @@
 import BookList from "@/components/BookList";
 import BookOverview from "@/components/BookOverview";
 import { db } from "@/database/drizzle";
-import { books, users } from "@/database/schema";
+import { books } from "@/database/schema";
 import { auth } from "@/auth";
 import { desc } from "drizzle-orm";
-import { redirect } from "next/navigation";
 
-const Home = async () => {
+const BooksHome = async () => {
   const session = await auth();
-
-  // If not logged in, redirect to landing page
-  if (!session) {
-    redirect("/landing");
-  }
 
   const latestBooks = (await db
     .select()
@@ -33,4 +27,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default BooksHome;
