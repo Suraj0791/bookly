@@ -1,5 +1,4 @@
-import dummyBooks from "../dummybooks.json";
-import ImageKit from "imagekit";
+import booksData from "../public/books.json";
 import { books, users } from "@/database/schema";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
@@ -10,30 +9,6 @@ config({ path: ".env" });
 
 const sql = neon(process.env.DATABASE_URL!);
 export const db = drizzle({ client: sql });
-
-const imagekit = new ImageKit({
-  publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
-  urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!,
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
-});
-
-const uploadToImageKit = async (
-  url: string,
-  fileName: string,
-  folder: string,
-) => {
-  try {
-    const response = await imagekit.upload({
-      file: url,
-      fileName,
-      folder,
-    });
-
-    return response.filePath;
-  } catch (error) {
-    console.error("Error uploading image to ImageKit:", error);
-  }
-};
 
 const seed = async () => {
   console.log("Seeding data...");
@@ -51,7 +26,7 @@ const seed = async () => {
       email: "admin@university.edu",
       universityId: 12345,
       password: adminPassword,
-      universityCard: "/demo/admin-id.jpg", // Demo image path
+      universityCard: "https://ik.imagekit.io/pwd17k26p/demo/admin-id.jpg",
       status: "APPROVED",
       role: "ADMIN",
     }).onConflictDoNothing();
@@ -62,36 +37,36 @@ const seed = async () => {
       email: "student@university.edu",
       universityId: 67890,
       password: userPassword,
-      universityCard: "/demo/student-id.jpg", // Demo image path
+      universityCard: "https://ik.imagekit.io/pwd17k26p/demo/student-id.jpg",
       status: "APPROVED",
       role: "USER",
     }).onConflictDoNothing();
 
     console.log("Demo users created successfully!");
 
-    // Seed books
+    // Seed books with ImageKit URLs already in place
     console.log("Seeding books...");
-    for (const book of dummyBooks) {
-      const coverUrl = (await uploadToImageKit(
-        book.coverUrl,
-        `${book.title}.jpg`,
-        "/books/covers",
-      )) as string;
-
-      const videoUrl = (await uploadToImageKit(
-        book.videoUrl,
-        `${book.title}.mp4`,
-        "/books/videos",
-      )) as string;
-
+    for (const book of booksData) {
       await db.insert(books).values({
-        ...book,
-        coverUrl,
-        videoUrl,
+        id: book.id,
+        title: book.title,
+        author: book.author,
+        genre: book.genre,
+        rating: book.rating.toString(),
+        totalCopies: book.totalCopies,
+        availableCopies: book.availableCopies,
+        coverUrl: book.coverUrl,
+        coverColor: book.coverColor,
+        videoUrl: book.videoUrl,
+        description: book.description,
+        summary: book.summary,
       }).onConflictDoNothing();
     }
 
     console.log("Data seeded successfully!");
+    console.log("\n📚 Demo Accounts:");
+    console.log("Admin: admin@university.edu / admin123");
+    console.log("Student: student@university.edu / student123");
   } catch (error) {
     console.error("Error seeding data:", error);
   }

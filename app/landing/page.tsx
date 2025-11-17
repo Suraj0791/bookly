@@ -5,10 +5,8 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import { desc } from "drizzle-orm";
-import BookCard from "@/components/BookCard";
 
 const PublicLandingPage = async () => {
-  // Fetch latest books to display
   const latestBooks = (await db
     .select()
     .from(books)
@@ -16,151 +14,134 @@ const PublicLandingPage = async () => {
     .orderBy(desc(books.createdAt))) as Book[];
 
   return (
-    <div className="min-h-screen bg-light-100">
+    <div className="min-h-screen bg-dark-300">
       {/* Hero Section */}
-      <header className="bg-gradient-to-r from-primary to-blue-600 text-white">
-        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <header className="bg-dark-300">
+        <nav className="container mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image src="/icons/logo.svg" alt="logo" width={40} height={40} />
-            <h1 className="text-2xl font-bold">BookWise</h1>
+            <h1 className="font-bebas-neue text-3xl text-primary">BookWise</h1>
           </div>
           <div className="flex gap-3">
             <Button
               asChild
               variant="outline"
-              className="bg-white text-primary hover:bg-gray-100"
+              className="border-dark-600 bg-dark-200 text-light-100 hover:bg-dark-600"
             >
               <Link href="/sign-in">Sign In</Link>
             </Button>
-            <Button asChild className="bg-dark-200 hover:bg-dark-300">
+            <Button asChild className="form-btn">
               <Link href="/demo">Try Demo</Link>
             </Button>
           </div>
         </nav>
 
-        <div className="container mx-auto px-6 py-20 text-center">
-          <h1 className="text-5xl font-bold mb-6">
-            Modern University Library Management
-          </h1>
-          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Full-stack library system with admin approval workflows, real-time
-            tracking, and automated notifications. Built with Next.js 15,
-            TypeScript, and PostgreSQL.
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-primary hover:bg-gray-100"
-            >
-              <Link href="/demo">
-                <Image
-                  src="/icons/book.svg"
-                  alt="demo"
-                  width={20}
-                  height={20}
-                  className="mr-2"
-                />
-                Explore Demo
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
-            >
-              <Link href="/sign-up">Create Account</Link>
-            </Button>
+        <div className="container mx-auto max-w-7xl px-6 pt-16 pb-32">
+          <div className="text-center">
+            <h1 className="font-bebas-neue text-7xl text-white mb-6 leading-tight">
+              MODERN UNIVERSITY
+              <br />
+              LIBRARY MANAGEMENT
+            </h1>
+            <p className="text-xl text-light-100 max-w-3xl mx-auto mb-10 leading-relaxed">
+              Full-stack library system with admin approval workflows, real-time
+              tracking, and automated notifications. Built with Next.js 15,
+              TypeScript, and PostgreSQL.
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Button asChild size="lg" className="form-btn text-xl px-10 py-6">
+                <Link href="/demo">
+                  <Image
+                    src="/icons/book.svg"
+                    alt="demo"
+                    width={24}
+                    height={24}
+                    className="mr-2"
+                  />
+                  Explore Demo
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-dark-100 text-xl px-10 py-6 font-bebas-neue"
+              >
+                <Link href="/sign-up">Create Account</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Features Section */}
-      <section className="container mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12 text-dark-400">
+      {/* Features */}
+      <section className="container mx-auto max-w-7xl px-6 py-20">
+        <h2 className="font-bebas-neue text-5xl text-center mb-16 text-white">
           Key Features
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <Image
-                src="/icons/admin/users.svg"
-                alt="auth"
-                width={24}
-                height={24}
-              />
+          {[
+            {
+              icon: "/icons/user.svg",
+              title: "Multi-Role Authentication",
+              desc: "Secure NextAuth.js integration with admin approval workflows and role-based access control",
+            },
+            {
+              icon: "/icons/book-2.svg",
+              title: "Real-Time Inventory",
+              desc: "Live book availability tracking with borrow/return management and due date notifications",
+            },
+            {
+              icon: "/icons/home.svg",
+              title: "Admin Dashboard",
+              desc: "Comprehensive admin panel with user management, analytics, and automated workflows",
+            },
+          ].map((feature, i) => (
+            <div
+              key={i}
+              className="bg-dark-200 p-8 rounded-xl border border-dark-600 hover:border-primary transition"
+            >
+              <div className="w-14 h-14 bg-dark-600 rounded-lg flex items-center justify-center mb-6">
+                <Image
+                  src={feature.icon}
+                  alt={feature.title}
+                  width={28}
+                  height={28}
+                />
+              </div>
+              <h3 className="font-bebas-neue text-2xl mb-3 text-white">
+                {feature.title}
+              </h3>
+              <p className="text-light-500 leading-relaxed">{feature.desc}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-dark-400">
-              Multi-Role Authentication
-            </h3>
-            <p className="text-gray-600">
-              Secure NextAuth.js integration with admin approval workflows and
-              role-based access control
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-              <Image
-                src="/icons/admin/book.svg"
-                alt="books"
-                width={24}
-                height={24}
-              />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-dark-400">
-              Real-Time Inventory
-            </h3>
-            <p className="text-gray-600">
-              Live book availability tracking with borrow/return management and
-              due date notifications
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <Image
-                src="/icons/admin/home.svg"
-                alt="admin"
-                width={24}
-                height={24}
-              />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-dark-400">
-              Admin Dashboard
-            </h3>
-            <p className="text-gray-600">
-              Comprehensive admin panel with user management, analytics, and
-              automated workflows
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Tech Stack Section */}
-      <section className="bg-white py-16">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-dark-400">
+      {/* Tech Stack */}
+      <section className="bg-dark-200 py-20">
+        <div className="container mx-auto max-w-7xl px-6">
+          <h2 className="font-bebas-neue text-5xl text-center mb-16 text-white">
             Tech Stack
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { name: "Next.js 15", desc: "App Router & RSC" },
               { name: "TypeScript", desc: "Type Safety" },
               { name: "PostgreSQL", desc: "Neon Database" },
               { name: "Drizzle ORM", desc: "Type-safe queries" },
               { name: "NextAuth.js", desc: "Authentication" },
-              { name: "Redis", desc: "Caching & Rate Limiting" },
+              { name: "Redis", desc: "Rate Limiting" },
               { name: "ImageKit", desc: "File Management" },
-              { name: "Upstash", desc: "Workflows & Queue" },
-            ].map((tech) => (
+              { name: "Upstash", desc: "Workflows" },
+            ].map((tech, i) => (
               <div
-                key={tech.name}
-                className="p-4 border rounded-lg hover:shadow-md transition"
+                key={i}
+                className="bg-dark-300 p-6 rounded-lg border border-dark-600 hover:border-primary transition text-center"
               >
-                <h4 className="font-semibold text-dark-400">{tech.name}</h4>
-                <p className="text-sm text-gray-500">{tech.desc}</p>
+                <h4 className="font-bebas-neue text-xl text-primary mb-1">
+                  {tech.name}
+                </h4>
+                <p className="text-sm text-light-500">{tech.desc}</p>
               </div>
             ))}
           </div>
@@ -168,34 +149,47 @@ const PublicLandingPage = async () => {
       </section>
 
       {/* Books Preview */}
-      <section className="container mx-auto px-6 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold text-dark-400">
+      <section className="container mx-auto max-w-7xl px-6 py-20">
+        <div className="flex items-center justify-between mb-12">
+          <h2 className="font-bebas-neue text-5xl text-white">
             Library Collection
           </h2>
-          <Button asChild>
+          <Button asChild className="form-btn">
             <Link href="/demo">View All Books</Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {latestBooks.map((book) => (
-            <div key={book.id} className="group cursor-pointer">
-              <div className="bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition">
+            <Link key={book.id} href="/demo" className="group">
+              <div className="bg-dark-200 p-4 rounded-xl border border-dark-600 hover:border-primary transition">
                 <div
-                  className="aspect-[3/4] mb-3 rounded-lg overflow-hidden relative"
+                  className="aspect-[3/4] mb-4 rounded-lg overflow-hidden flex items-center justify-center"
                   style={{ backgroundColor: book.coverColor }}
                 >
-                  <Image
-                    src={book.coverUrl}
-                    alt={book.title}
-                    fill
-                    className="object-cover"
-                  />
+                  {book.coverUrl &&
+                  !book.coverUrl.startsWith("/books/covers/") ? (
+                    <Image
+                      src={book.coverUrl}
+                      alt={book.title}
+                      width={200}
+                      height={300}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-center p-4">
+                      <p className="font-bebas-neue text-2xl text-white/90 mb-2">
+                        {book.title}
+                      </p>
+                      <p className="text-sm text-white/60">{book.author}</p>
+                    </div>
+                  )}
                 </div>
-                <h3 className="font-semibold text-dark-400 line-clamp-1">
+                <h3 className="font-semibold text-white line-clamp-1 mb-1">
                   {book.title}
                 </h3>
-                <p className="text-sm text-gray-500">{book.author}</p>
+                <p className="text-sm text-light-500 line-clamp-1">
+                  {book.author}
+                </p>
                 <div className="flex items-center gap-2 mt-2">
                   <Image
                     src="/icons/star.svg"
@@ -203,34 +197,33 @@ const PublicLandingPage = async () => {
                     width={16}
                     height={16}
                   />
-                  <span className="text-sm font-medium">{book.rating}</span>
+                  <span className="text-sm font-medium text-light-100">
+                    {book.rating}
+                  </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-primary to-blue-600 text-white py-16">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Explore?</h2>
-          <p className="text-xl mb-8 text-blue-100">
+      {/* CTA */}
+      <section className="bg-dark-300 py-20">
+        <div className="container mx-auto max-w-7xl px-6 text-center">
+          <h2 className="font-bebas-neue text-6xl text-white mb-6">
+            Ready to Explore?
+          </h2>
+          <p className="text-xl text-light-100 mb-10 max-w-2xl mx-auto">
             Try the demo with pre-populated data or create your own account
           </p>
           <div className="flex gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-primary hover:bg-gray-100"
-            >
+            <Button asChild size="lg" className="form-btn text-xl px-10 py-6">
               <Link href="/demo">Launch Demo</Link>
             </Button>
             <Button
               asChild
               size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
+              className="border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-dark-100 text-xl px-10 py-6 font-bebas-neue"
             >
               <Link href="/sign-up">Sign Up Free</Link>
             </Button>
@@ -239,17 +232,25 @@ const PublicLandingPage = async () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-dark-400 text-white py-8">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            Built by Suraj • Full-Stack Developer •
-            <a
-              href="https://github.com/Suraj0791/bookly"
-              className="text-primary ml-1 hover:underline"
-            >
-              View on GitHub
-            </a>
+      <footer className="bg-dark-500 py-10">
+        <div className="container mx-auto max-w-7xl px-6 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Image src="/icons/logo.svg" alt="logo" width={32} height={32} />
+            <span className="font-bebas-neue text-2xl text-primary">
+              BookWise
+            </span>
+          </div>
+          <p className="text-light-500">
+            Built by Suraj • Full-Stack Developer
           </p>
+          <a
+            href="https://github.com/Suraj0791/bookly"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline mt-2 inline-block"
+          >
+            View on GitHub →
+          </a>
         </div>
       </footer>
     </div>
